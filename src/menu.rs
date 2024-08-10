@@ -100,11 +100,12 @@ fn setup_menu(mut commands: Commands, textures: Res<TextureAssets>) {
                 .spawn((
                     ButtonBundle {
                         style: Style {
-                            width: Val::Px(170.0),
+                            width: Val::Px(150.0),
                             height: Val::Px(50.0),
                             justify_content: JustifyContent::SpaceAround,
                             align_items: AlignItems::Center,
                             padding: UiRect::all(Val::Px(5.)),
+                            margin: UiRect::all(Val::Px(20.)),
                             ..Default::default()
                         },
                         background_color: Color::NONE.into(),
@@ -114,13 +115,13 @@ fn setup_menu(mut commands: Commands, textures: Res<TextureAssets>) {
                         normal: Color::NONE,
                         ..default()
                     },
-                    OpenLink("https://bevyengine.org"),
+                    OpenLink("https://discord.com/"),
                 ))
                 .with_children(|parent| {
                     parent.spawn(TextBundle::from_section(
-                        "Made with Bevy",
+                        "Discord Server",
                         TextStyle {
-                            font_size: 15.0,
+                            font_size: 20.0,
                             color: Color::linear_rgb(0.9, 0.9, 0.9),
                             ..default()
                         },
@@ -138,11 +139,12 @@ fn setup_menu(mut commands: Commands, textures: Res<TextureAssets>) {
                 .spawn((
                     ButtonBundle {
                         style: Style {
-                            width: Val::Px(170.0),
+                            width: Val::Px(150.0),
                             height: Val::Px(50.0),
                             justify_content: JustifyContent::SpaceAround,
                             align_items: AlignItems::Center,
                             padding: UiRect::all(Val::Px(5.)),
+                            margin: UiRect::all(Val::Px(20.)),
                             ..default()
                         },
                         background_color: Color::NONE.into(),
@@ -152,19 +154,19 @@ fn setup_menu(mut commands: Commands, textures: Res<TextureAssets>) {
                         normal: Color::NONE,
                         hovered: Color::linear_rgb(0.25, 0.25, 0.25),
                     },
-                    OpenLink("https://github.com/NiklasEi/bevy_game_template"),
+                    OpenLink("embershade.com"),
                 ))
                 .with_children(|parent| {
                     parent.spawn(TextBundle::from_section(
-                        "Open source",
+                        "Embershade Games",
                         TextStyle {
-                            font_size: 15.0,
+                            font_size: 20.0,
                             color: Color::linear_rgb(0.9, 0.9, 0.9),
                             ..default()
                         },
                     ));
                     parent.spawn(ImageBundle {
-                        image: textures.github.clone().into(),
+                        image: textures.bevy.clone().into(),
                         style: Style {
                             width: Val::Px(32.),
                             ..default()
