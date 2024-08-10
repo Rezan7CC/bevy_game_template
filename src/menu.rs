@@ -127,7 +127,7 @@ fn setup_menu(mut commands: Commands, textures: Res<TextureAssets>) {
                         },
                     ));
                     parent.spawn(ImageBundle {
-                        image: textures.bevy.clone().into(),
+                        image: textures.discord_icon.clone().into(),
                         style: Style {
                             width: Val::Px(32.),
                             ..default()
@@ -166,7 +166,7 @@ fn setup_menu(mut commands: Commands, textures: Res<TextureAssets>) {
                         },
                     ));
                     parent.spawn(ImageBundle {
-                        image: textures.bevy.clone().into(),
+                        image: textures.bevy_icon.clone().into(),
                         style: Style {
                             width: Val::Px(32.),
                             ..default()
