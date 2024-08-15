@@ -5,7 +5,7 @@ use bevy::asset::AssetMetaCheck;
 use bevy::prelude::*;
 use bevy::window::{PresentMode, PrimaryWindow};
 use bevy::winit::WinitWindows;
-use bevy_game::GamePlugin; // ToDo: Replace bevy_game with your new crate name.
+use bevy_game_template::GamePlugin; // ToDo: Replace bevy_game with your new crate name.
 use std::io::Cursor;
 use winit::window::Icon;
 
