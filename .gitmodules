@@ -1,4 +1,4 @@
 [submodule "bevy_framework"]
 	path = bevy_framework
-	url = https://github.com/Rezan7CC/bevy_framework
+	url = git@github.com:Rezan7CC/bevy_framework.git
 	branch = main
