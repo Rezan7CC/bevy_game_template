@@ -36,12 +36,12 @@ fn main() {
                 }),
         )
         .add_plugins(GamePlugin)
-        .add_systems(Startup, set_window_icon)
+        .add_systems(Startup, system_set_window_icon)
         .run();
 }
 
 // Sets the icon on windows and X11
-fn set_window_icon(
+fn system_set_window_icon(
     windows: NonSend<WinitWindows>,
     primary_window: Query<Entity, With<PrimaryWindow>>,
 ) {

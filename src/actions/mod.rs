@@ -15,7 +15,7 @@ impl Plugin for ActionsPlugin {
     fn build(&self, app: &mut App) {
         app.init_resource::<Actions>().add_systems(
             Update,
-            set_movement_actions.run_if(in_state(GameState::Game)),
+            system_set_movement_actions.run_if(in_state(GameState::Game)),
         );
     }
 }
@@ -25,7 +25,7 @@ pub struct Actions {
     pub player_movement: Option<Vec2>,
 }
 
-pub fn set_movement_actions(
+pub fn system_set_movement_actions(
     mut actions: ResMut<Actions>,
     keyboard_input: Res<ButtonInput<KeyCode>>,
     touch_input: Res<Touches>,
