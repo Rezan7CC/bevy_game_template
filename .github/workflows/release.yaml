@@ -40,6 +40,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          submodules: true
       - name: Remove build script
         run: |
           rm build.rs
@@ -89,6 +91,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          submodules: true
       - name: Install rust toolchain
         uses: dtolnay/rust-toolchain@master
         with:
@@ -124,6 +128,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          submodules: true
       - name: Install rust toolchain
         uses: dtolnay/rust-toolchain@master
         with:
@@ -175,6 +181,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          submodules: true
       - name: Install rust toolchain
         uses: dtolnay/rust-toolchain@master
         with:
@@ -218,6 +226,8 @@ jobs:
       VERSION: ${{needs.get-version.outputs.version}}
     steps:
       - uses: actions/checkout@v4
+        with:
+          submodules: true
       - uses: dtolnay/rust-toolchain@stable
       - name: Add iOS targets
         run: rustup target add aarch64-apple-ios x86_64-apple-ios
@@ -247,6 +257,8 @@ jobs:
       VERSION: ${{needs.get-version.outputs.version}}
     steps:
       - uses: actions/checkout@v4
+        with:
+          submodules: true
       - uses: dtolnay/rust-toolchain@stable
       - name: Add Android targets
         # could add more targets like armv7-linux-androideabi here (then also add to cargo-apk config)

@@ -32,6 +32,8 @@ jobs:
     timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
+        with:
+          submodules: true
       - uses: dtolnay/rust-toolchain@stable
       - name: Add iOS targets
         run: rustup target add aarch64-apple-ios
