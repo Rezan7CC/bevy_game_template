@@ -1,6 +1,6 @@
-use crate::loading::TextureAssets;
-use crate::GameState;
+use crate::asset_loading::TextureAssets;
 use bevy::prelude::*;
+use framework::GameState;
 
 pub struct MenuPlugin;
 
@@ -33,8 +33,6 @@ impl Default for ButtonColors {
 struct Menu;
 
 fn setup_menu(mut commands: Commands, textures: Res<TextureAssets>) {
-    info!("menu");
-    commands.spawn(Camera2dBundle::default());
     commands
         .spawn((
             NodeBundle {
@@ -66,7 +64,7 @@ fn setup_menu(mut commands: Commands, textures: Res<TextureAssets>) {
                         ..Default::default()
                     },
                     button_colors,
-                    ChangeState(GameState::Playing),
+                    ChangeState(GameState::Game),
                 ))
                 .with_children(|parent| {
                     parent.spawn(TextBundle::from_section(
@@ -200,7 +198,7 @@ fn click_play_button(
         match *interaction {
             Interaction::Pressed => {
                 if let Some(state) = change_state {
-                    next_state.set(state.0.clone());
+                    next_state.set(state.0);
                 } else if let Some(link) = open_link {
                     if let Err(error) = webbrowser::open(link.0) {
                         warn!("Failed to open link {error:?}");

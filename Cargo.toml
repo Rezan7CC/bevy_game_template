@@ -7,7 +7,7 @@ edition = "2021"
 exclude = ["dist", "build", "assets", "credits"]
 
 [workspace]
-members = ["mobile"]
+members = ["mobile", "bevy_framework/derive_macros", "bevy_framework/framework"]
 
 [profile.dev.package."*"]
 opt-level = 3
@@ -41,12 +41,16 @@ bevy = { version = "0.14" }
 bevy_asset_loader = { version = "0.21" }
 rand = { version = "0.8.3" }
 webbrowser = { version = "1", features = ["hardened"] }
+framework = { path = "bevy_framework/framework", features = ["physics2d", "camera2d"] }
 
 # keep the following in sync with Bevy's dependencies
 winit = { version = "0.30", default-features = false }
 image = { version = "0.25", default-features = false }
 ## This greatly improves WGPU's performance due to its heavy use of trace! calls
 log = { version = "0.4", features = ["max_level_debug", "release_max_level_warn"] }
+
+[patch.crates-io]
+bevy_tweening = { git = "https://github.com/Rezan7CC/bevy_tweening", branch = "main" }
 
 [build-dependencies]
 embed-resource = "1"

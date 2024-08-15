@@ -6,14 +6,17 @@ use bevy_game::GamePlugin; // ToDo: Replace bevy_game with your new crate name.
 fn main() {
     App::new()
         .add_plugins((
-            DefaultPlugins.set(WindowPlugin {
-                primary_window: Some(Window {
-                    resizable: false,
-                    mode: WindowMode::BorderlessFullscreen,
+            DefaultPlugins
+                .build()
+                .disable::<bevy::log::LogPlugin>()
+                .set(WindowPlugin {
+                    primary_window: Some(Window {
+                        resizable: false,
+                        mode: WindowMode::BorderlessFullscreen,
+                        ..default()
+                    }),
                     ..default()
                 }),
-                ..default()
-            }),
             GamePlugin,
         ))
         .run();
