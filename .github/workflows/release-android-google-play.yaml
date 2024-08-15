@@ -35,6 +35,9 @@ jobs:
     steps:
       - name: Install Dependencies
         run: sudo apt-get update; sudo apt-get install pkg-config libx11-dev libasound2-dev libudev-dev lld llvm
+      - uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.READ_ONLY_DEPLOY_KEY }}
       - uses: actions/checkout@v4
         with:
           submodules: true
