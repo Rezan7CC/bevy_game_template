@@ -38,12 +38,10 @@ jobs:
       MACOSX_DEPLOYMENT_TARGET: 11.0
       VERSION: ${{needs.get-version.outputs.version}}
     steps:
-      - uses: webfactory/ssh-agent@v0.9.0
-        with:
-          ssh-private-key: ${{ secrets.READ_ONLY_DEPLOY_KEY }}
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
+          token: ${{ secrets.BEVY_FRAMEWORK_ACCESS }}
           submodules: true
       - name: Remove build script
         run: |
@@ -92,12 +90,10 @@ jobs:
     env:
       VERSION: ${{needs.get-version.outputs.version}}
     steps:
-      - uses: webfactory/ssh-agent@v0.9.0
-        with:
-          ssh-private-key: ${{ secrets.READ_ONLY_DEPLOY_KEY }}
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
+          token: ${{ secrets.BEVY_FRAMEWORK_ACCESS }}
           submodules: true
       - name: Install rust toolchain
         uses: dtolnay/rust-toolchain@master
@@ -132,12 +128,10 @@ jobs:
       VERSION: ${{needs.get-version.outputs.version}}
       BUILD_INSTALLER: ${{ false }}
     steps:
-      - uses: webfactory/ssh-agent@v0.9.0
-        with:
-          ssh-private-key: ${{ secrets.READ_ONLY_DEPLOY_KEY }}
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
+          token: ${{ secrets.BEVY_FRAMEWORK_ACCESS }}
           submodules: true
       - name: Install rust toolchain
         uses: dtolnay/rust-toolchain@master
@@ -188,12 +182,10 @@ jobs:
     env:
       VERSION: ${{needs.get-version.outputs.version}}
     steps:
-      - uses: webfactory/ssh-agent@v0.9.0
-        with:
-          ssh-private-key: ${{ secrets.READ_ONLY_DEPLOY_KEY }}
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
+          token: ${{ secrets.BEVY_FRAMEWORK_ACCESS }}
           submodules: true
       - name: Install rust toolchain
         uses: dtolnay/rust-toolchain@master
@@ -237,11 +229,9 @@ jobs:
     env:
       VERSION: ${{needs.get-version.outputs.version}}
     steps:
-      - uses: webfactory/ssh-agent@v0.9.0
-        with:
-          ssh-private-key: ${{ secrets.READ_ONLY_DEPLOY_KEY }}
       - uses: actions/checkout@v4
         with:
+          token: ${{ secrets.BEVY_FRAMEWORK_ACCESS }}
           submodules: true
       - uses: dtolnay/rust-toolchain@stable
       - name: Add iOS targets
@@ -271,11 +261,9 @@ jobs:
     env:
       VERSION: ${{needs.get-version.outputs.version}}
     steps:
-      - uses: webfactory/ssh-agent@v0.9.0
-        with:
-          ssh-private-key: ${{ secrets.READ_ONLY_DEPLOY_KEY }}
       - uses: actions/checkout@v4
         with:
+          token: ${{ secrets.BEVY_FRAMEWORK_ACCESS }}
           submodules: true
       - uses: dtolnay/rust-toolchain@stable
       - name: Add Android targets

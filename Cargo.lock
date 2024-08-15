@@ -4031,7 +4031,6 @@ dependencies = [
  "bevy 0.14.1",
  "bevy_game_template",
  "cpal",
- "framework",
 ]
 
 [[package]]

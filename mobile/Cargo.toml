@@ -12,9 +12,6 @@ crate-type = ["staticlib", "cdylib"]
 bevy_game_template = { path = ".." } # ToDo
 bevy = { version = "0.14", default-features = false }
 
-[build-dependencies]
-framework = { path = "../bevy_framework/framework" }
-
 # As long as Kira doesn't expose a feature for this, we need to enable it
 # See https://github.com/tesselode/kira/pull/51
 [target."cfg(target_os = \"android\")".dependencies.cpal]
