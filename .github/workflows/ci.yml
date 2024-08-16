@@ -53,8 +53,10 @@ jobs:
           toolchain: stable
       - name: Install alsa and udev
         run: sudo apt-get update; sudo apt-get install --no-install-recommends libasound2-dev libudev-dev
-      - name: Run doc tests with all features (this also compiles README examples)
-        run: cargo test --doc --all-features
+      - name: Run doc tests with all 2d features (this also compiles README examples)
+        run: cargo test --doc --features "framework/2d_all"
+      - name: Run doc tests with all 3d features (this also compiles README examples)
+        run: cargo test --doc --features "framework/3d_all"
   lint:
     runs-on: ubuntu-latest
     steps:
@@ -77,7 +79,13 @@ jobs:
           components: rustfmt, clippy
       - name: Install alsa and udev
         run: sudo apt-get update; sudo apt-get install --no-install-recommends libasound2-dev libudev-dev
-      - name: Run clippy
-        run: cargo clippy --workspace --all-targets --all-features -- -Dwarnings
+      - name: Run clippy (all 2d features)
+        run: cargo clippy --workspace --all-targets --features "framework/2d_all" -- -Dwarnings
+      - name: Run clippy (minimal 2d features)
+        run: cargo clippy --workspace --all-targets --features "framework/2d_minimal" -- -Dwarnings
+      - name: Run clippy (all 3d features)
+        run: cargo clippy --workspace --all-targets --features "framework/3d_all" -- -Dwarnings
+      - name: Run clippy (minimal 3d features)
+        run: cargo clippy --workspace --all-targets --features "framework/3d_minimal" -- -Dwarnings
       - name: Check format
         run: cargo fmt --all -- --check
