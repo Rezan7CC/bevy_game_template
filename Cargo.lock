@@ -487,6 +487,7 @@ dependencies = [
  "anyhow",
  "bevy",
  "bevy_asset_loader_derive",
+ "iyes_progress",
  "path-slash",
 ]
 
@@ -2286,6 +2287,7 @@ name = "framework"
 version = "0.1.0"
 dependencies = [
  "bevy",
+ "bevy_asset_loader",
  "bevy_dev_console",
  "bevy_flowfield_tiles_plugin",
  "bevy_framepace",
@@ -2297,6 +2299,7 @@ dependencies = [
  "bevy_xpbd_3d",
  "derive_macros",
  "iyes_perf_ui",
+ "iyes_progress",
  "strum",
  "strum_macros",
 ]
@@ -2805,6 +2808,19 @@ checksum = "3c7015cab699e6224bd5519854cff04280dddab4257090f4720e85d1095e66c8"
 dependencies = [
  "bevy",
  "num-traits",
+]
+
+[[package]]
+name = "iyes_progress"
+version = "0.12.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "189dfbfb74fd3307536274b549c79cc7a3b076b8da067aa9fc2d6130eaca09ba"
+dependencies = [
+ "bevy_app",
+ "bevy_asset",
+ "bevy_ecs",
+ "bevy_state",
+ "bevy_utils",
 ]
 
 [[package]]
