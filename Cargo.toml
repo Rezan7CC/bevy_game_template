@@ -48,6 +48,8 @@ winit = { version = "0.30", default-features = false }
 image = { version = "0.25", default-features = false }
 ## This greatly improves WGPU's performance due to its heavy use of trace! calls
 log = { version = "0.4", features = ["max_level_debug", "release_max_level_warn"] }
+strum_macros = "0.26.4"
+strum = "0.26.3"
 
 [patch.crates-io]
 bevy_tweening = { git = "https://github.com/Rezan7CC/bevy_tweening", branch = "main" }

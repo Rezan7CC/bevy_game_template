@@ -1,7 +1,7 @@
 #![allow(clippy::type_complexity)]
 
-mod actions;
 mod asset_loading;
+mod game_input;
 mod menu;
 mod player;
 
@@ -15,8 +15,8 @@ impl Plugin for GamePlugin {
             .add_plugins((
                 asset_loading::AssetLoadingPlugin,
                 menu::MenuPlugin,
-                actions::ActionsPlugin,
                 player::PlayerPlugin,
+                game_input::GameInputPlugin::default(),
             ));
     }
 }

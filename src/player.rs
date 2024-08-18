@@ -1,15 +1,19 @@
-use crate::actions::Actions;
 use crate::asset_loading::TextureAssets;
+use crate::game_input;
 use bevy::prelude::*;
 use framework::gameplay::{movement, player};
 use framework::GameState;
+
 pub struct PlayerPlugin;
 
 impl Plugin for PlayerPlugin {
     fn build(&self, app: &mut App) {
         app.add_systems(OnEnter(GameState::Game), system_spawn_player);
 
-        app.add_systems(Update, system_move_player.run_if(in_state(GameState::Game)));
+        app.add_systems(
+            Update,
+            (system_player_movement_input,).run_if(in_state(GameState::Game)),
+        );
     }
 }
 
@@ -24,33 +28,40 @@ fn system_spawn_player(mut commands: Commands, textures: Res<TextureAssets>) {
         movement::Movement::default(),
         movement::MovementParameters {
             rotate_to_control_input: false,
-            max_speed: 250.0,
-            acceleration: 1500.0,
+            max_speed: 300.0,
+            acceleration: 2000.0,
             deceleration: 1000.0,
             use_physics_system: false,
-            direction_behavior:
-                movement::MovementDirectionBehavior::InputOverridesVelocityDirection,
+            direction_behavior: movement::MovementDirectionBehavior::InputAffectsVelocityDirection,
             default_forward_direction: Vec3::Y,
             ..Default::default()
         },
     ));
 }
 
-fn system_move_player(
-    time: Res<Time>,
-    actions: Res<Actions>,
-    mut player_query: Query<&mut Transform, With<player::Player>>,
+pub fn system_player_movement_input(
+    input_actions: Res<game_input::GameInputActionsResource>,
+    mut query: Query<&mut movement::MovementParameters, With<player::Player>>,
 ) {
-    if actions.player_movement.is_none() {
-        return;
-    }
-    let speed = 150.;
-    let movement = Vec3::new(
-        actions.player_movement.unwrap().x * speed * time.delta_seconds(),
-        actions.player_movement.unwrap().y * speed * time.delta_seconds(),
-        0.,
-    );
-    for mut player_transform in &mut player_query {
-        player_transform.translation += movement;
+    for mut movement_params in query.iter_mut() {
+        movement_params.control_input = Vec3::ZERO;
+
+        if input_actions.action_active(game_input::GameInputActionType::MoveUp) {
+            movement_params.control_input += Vec3::Y;
+        }
+
+        if input_actions.action_active(game_input::GameInputActionType::MoveDown) {
+            movement_params.control_input += -Vec3::Y;
+        }
+
+        if input_actions.action_active(game_input::GameInputActionType::MoveLeft) {
+            movement_params.control_input += -Vec3::X;
+        }
+
+        if input_actions.action_active(game_input::GameInputActionType::MoveRight) {
+            movement_params.control_input += Vec3::X;
+        }
+
+        movement_params.control_input = movement_params.control_input.normalize_or_zero();
     }
 }
