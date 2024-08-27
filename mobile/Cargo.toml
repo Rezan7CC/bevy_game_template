@@ -25,7 +25,7 @@ bevy = { version = "0.14", default-features = false, features = [
 ] }
 
 [package.metadata.android]
-package = "me.embershade.bevygametemplate"  # ToDo
+package = "com.embershade.bevygame"  # ToDo
 apk_name = "BevyGameTemplate"  # ToDo same as GAME_OSX_APP_NAME in release workflow
 assets = "../assets"
 strip = "strip"

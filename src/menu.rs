@@ -116,7 +116,7 @@ fn system_setup_menu(mut commands: Commands, textures: Res<TextureAssets>) {
                         normal: Color::NONE,
                         ..default()
                     },
-                    OpenLink("https://discord.com/"),
+                    OpenLink("https://discord.gg/K9da9kNvjS"),
                 ))
                 .with_children(|parent| {
                     parent.spawn(TextBundle::from_section(
@@ -155,7 +155,7 @@ fn system_setup_menu(mut commands: Commands, textures: Res<TextureAssets>) {
                         normal: Color::NONE,
                         hovered: Color::linear_rgb(0.25, 0.25, 0.25),
                     },
-                    OpenLink("embershade.com"),
+                    OpenLink("https://embershade.com"),
                 ))
                 .with_children(|parent| {
                     parent.spawn(TextBundle::from_section(
@@ -167,7 +167,7 @@ fn system_setup_menu(mut commands: Commands, textures: Res<TextureAssets>) {
                         },
                     ));
                     parent.spawn(ImageBundle {
-                        image: textures.bevy_icon.clone().into(),
+                        image: textures.studio_icon.clone().into(),
                         style: Style {
                             width: Val::Px(32.),
                             ..default()

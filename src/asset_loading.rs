@@ -19,8 +19,8 @@ pub struct AudioAssets {}
 
 #[derive(AssetCollection, Resource)]
 pub struct TextureAssets {
-    #[asset(path = "textures/bevy.png")]
-    pub bevy_icon: Handle<Image>,
+    #[asset(path = "textures/EmbershadeIcon_HighContrast_TransparentBG.png")]
+    pub studio_icon: Handle<Image>,
 
     #[asset(path = "textures/discord-mark-white.png")]
     pub discord_icon: Handle<Image>,

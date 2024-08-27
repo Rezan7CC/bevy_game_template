@@ -6,17 +6,14 @@ use bevy_game_template::GamePlugin; // ToDo: Replace bevy_game with your new cra
 fn main() {
     App::new()
         .add_plugins((
-            DefaultPlugins
-                .build()
-                .disable::<bevy::log::LogPlugin>()
-                .set(WindowPlugin {
-                    primary_window: Some(Window {
-                        resizable: false,
-                        mode: WindowMode::BorderlessFullscreen,
-                        ..default()
-                    }),
+            DefaultPlugins.build().set(WindowPlugin {
+                primary_window: Some(Window {
+                    resizable: false,
+                    mode: WindowMode::BorderlessFullscreen,
                     ..default()
                 }),
+                ..default()
+            }),
             GamePlugin,
         ))
         .run();

@@ -1,6 +1,6 @@
 [package]
 name = "bevy_game_template" # ToDo
-version = "0.1.0"
+version = "0.1.1"
 publish = false
 authors = ["Rezan Kizilgun"]
 edition = "2021"
@@ -34,6 +34,7 @@ strip = true
 [features]
 dev = [
     "bevy/dynamic_linking",
+    "framework/dev"
 ]
 
 [dependencies]
@@ -41,7 +42,7 @@ bevy = { version = "0.14" }
 bevy_asset_loader = { version = "0.21" }
 rand = { version = "0.8.3" }
 webbrowser = { version = "1", features = ["hardened"] }
-framework = { path = "bevy_framework/framework", features = ["physics2d", "camera2d"] }
+framework = { path = "bevy_framework/framework", default-features = false, features = ["physics2d", "camera2d"] }
 
 # keep the following in sync with Bevy's dependencies
 winit = { version = "0.30", default-features = false }
@@ -50,6 +51,11 @@ image = { version = "0.25", default-features = false }
 log = { version = "0.4", features = ["max_level_debug", "release_max_level_warn"] }
 strum_macros = "0.26.4"
 strum = "0.26.3"
+
+[target."cfg(not(target_os = \"android\"))".dependencies.framework]
+path = "bevy_framework/framework"
+default-features = true
+features = ["physics2d", "camera2d"]
 
 [patch.crates-io]
 bevy_tweening = { git = "https://github.com/Rezan7CC/bevy_tweening", branch = "main" }
